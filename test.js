@@ -13,8 +13,6 @@ function showAll (){
     connection.query ("SELECT item_id, product_name, department_name, price, stock_quantity FROM products", function(err, result) {
         if (err) throw err;
        console.table(result);
-        //getResult = result;
-        //console.log("first quantity",result);
         getOrder();
     });
     
@@ -54,11 +52,7 @@ function getOrder() {
 
                 var quantity = answer.quantity;
                 console.log('quantity: ', quantity);
-                
-                //var getResult = queryProduct(order, quantity);
                 queryProduct(order, quantity);
-               // console.log("getResult: "+getResult);
-                //checkIfEnough(order, quantity, getResult);
                 
             });
         });
@@ -81,15 +75,16 @@ function queryProduct (order, quantity) {
 }
 function checkIfEnough(order, quantity, stockQuantity) {
     console.log("did I get here?");
-    if (stockQuantity != 'undefined') {
-        console.log(stockQuantity);
-        if (quantity > stockQuantity) {
+    //if (stockQuantity != 'undefined') {
+        console.log("79"+stockQuantity);
+        // if (quantity > stockQuantity) {
 
-            console.log("Insufficient quantity");
-            //setTimeout(function(){ showAll(); }, 2000);
-            connection.end();
+        //     console.log("Insufficient quantity");
+        //     //setTimeout(function(){ showAll(); }, 2000);
+        //     connection.end();
 
-        } else if (stockQuantity>=quantity){
+        // } else 
+         if (stockQuantity>=quantity){
             console.log("93:"+stockQuantity);
             console.log("94:"+order);
             // var query = "UPDATE products SET stock_quantity= " + (stockQuantity - quantity) + " WHERE product_name=" + order;
@@ -100,12 +95,12 @@ function checkIfEnough(order, quantity, stockQuantity) {
             console.log("Your order is complete");
             connection.end();
             });
-            
         }
-    }
+   // }
      else { console.log("#8: ","Insufficient quantity");
         inquirer
         .prompt("Insufficient quantity!");
+         //setTimeout(function(){ showAll(); }, 2000);
         connection.end();
     }
 

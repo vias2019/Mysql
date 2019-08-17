@@ -24,4 +24,6 @@ values ('purse', 'accessories', 100, 5),
 
 select * from products;
 SELECT product_name, price, stock_quantity FROM products WHERE product_name = 'purse' and stock_quantity >= 5;
- 
+use bamazon_db;
+select * from products;
+ UPDATE products SET stock_quantity = 150 WHERE product_name='purse';
