@@ -68,6 +68,8 @@ function queryProduct (order, quantity) {
         //console.log("#5:"+JSON.stringify(res[0]));
         //console.log("#6:"+JSON.stringify(res[0]['stock_quantity']));
         stockQuantity = JSON.stringify(res[0]['stock_quantity']);
+        price = JSON.stringify(res[0]['price']);
+        //console.log(price);
         //console.log("#7:"+stockQuantity);
         checkIfEnough(order, quantity, stockQuantity);
     });
@@ -92,6 +94,7 @@ function checkIfEnough(order, quantity, stockQuantity) {
             //console.log("query"+query);
             connection.query(query, [quantity, order], function (err) {
                 if (err) throw err;
+            console.log('paid: $'+price);
             console.log("Your order is complete");
             connection.end();
             });
