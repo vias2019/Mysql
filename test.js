@@ -39,10 +39,10 @@ function getOrder() {
                     type: "input",
                     message: "How namy items do you want to buy?",
                     validate: function (value) {
-                        if (isNaN(value) === false) {
-                            return true;
+                        if (!value)  {
+                            return 'THERE WAS AN ERROR IN QUANTITY, REVIEW LINE ABOVE';
                         }
-                        return false;
+                        return true;
                     }
                 }
             ])
@@ -63,20 +63,20 @@ function queryProduct (order, quantity) {
     var query = "SELECT product_name, price, stock_quantity FROM products WHERE product_name = '" + order+"'";
     var stockQuantity=0;
     connection.query(query, function (err, res) {
-        console.log(res);
+       // console.log(res);
         if (err) {console.log("Insufficient quantity");}
-        console.log("#5:"+JSON.stringify(res[0]));
-        console.log("#6:"+JSON.stringify(res[0]['stock_quantity']));
+        //console.log("#5:"+JSON.stringify(res[0]));
+        //console.log("#6:"+JSON.stringify(res[0]['stock_quantity']));
         stockQuantity = JSON.stringify(res[0]['stock_quantity']);
-        console.log("#7:"+stockQuantity);
+        //console.log("#7:"+stockQuantity);
         checkIfEnough(order, quantity, stockQuantity);
     });
     
 }
 function checkIfEnough(order, quantity, stockQuantity) {
-    console.log("did I get here?");
+    //console.log("did I get here?");
     //if (stockQuantity != 'undefined') {
-        console.log("79"+stockQuantity);
+        //console.log("79"+stockQuantity);
         // if (quantity > stockQuantity) {
 
         //     console.log("Insufficient quantity");
@@ -85,11 +85,11 @@ function checkIfEnough(order, quantity, stockQuantity) {
 
         // } else 
          if (stockQuantity>=quantity){
-            console.log("93:"+stockQuantity);
-            console.log("94:"+order);
+           // console.log("93:"+stockQuantity);
+            //console.log("94:"+order);
             // var query = "UPDATE products SET stock_quantity= " + (stockQuantity - quantity) + " WHERE product_name=" + order;
             var query = "UPDATE products SET stock_quantity = stock_quantity - ? WHERE product_name= ?"; 
-            console.log("query"+query);
+            //console.log("query"+query);
             connection.query(query, [quantity, order], function (err) {
                 if (err) throw err;
             console.log("Your order is complete");
@@ -97,7 +97,7 @@ function checkIfEnough(order, quantity, stockQuantity) {
             });
         }
    // }
-     else { console.log("#8: ","Insufficient quantity");
+     else { console.log("Insufficient quantity");
         inquirer
         .prompt("Insufficient quantity!");
          //setTimeout(function(){ showAll(); }, 2000);
