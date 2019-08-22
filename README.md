@@ -1,13 +1,15 @@
 # Mysql
 
+https://vias2019.github.io/Mysql-node/ 
 ________________________________________
-<b>ABOUT THE APP</b>
+<b>ABOUT THE APP</b><br>
+
 Bamazon is an Amazon-like storefront based on the MySQL. The app will take in orders from customers and deplete stock from the store's inventory. 
 
 Steps:
 1. This application will first display all of the items available for sale including the ids, names, and prices of products for sale.
 
-2. The app thrn prompts users with two messages.
+2. The app then prompts users with two messages.
 
    * The first should ask them the ID of the product they would like to buy.
    * The second message should ask how many units of the product they would like to buy.
