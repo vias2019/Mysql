@@ -77,15 +77,7 @@ function queryProduct (order, quantity) {
 }
 function checkIfEnough(order, quantity, stockQuantity) {
     //console.log("did I get here?");
-    //if (stockQuantity != 'undefined') {
-        //console.log("79"+stockQuantity);
-        // if (quantity > stockQuantity) {
-
-        //     console.log("Insufficient quantity");
-        //     //setTimeout(function(){ showAll(); }, 2000);
-        //     connection.end();
-
-        // } else 
+    
          if (stockQuantity>=quantity){
            // console.log("93:"+stockQuantity);
             //console.log("94:"+order);
@@ -99,7 +91,7 @@ function checkIfEnough(order, quantity, stockQuantity) {
             connection.end();
             });
         }
-   // }
+   
      else { console.log("Insufficient quantity");
         inquirer
         .prompt("Insufficient quantity!");
